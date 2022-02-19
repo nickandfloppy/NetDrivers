@@ -10,8 +10,11 @@
 </form>
 
 <?php
-$query = $_POST["query"];
-echo "<b>Query: </b>" . $query;
+$query = '%'.$_POST["query"].'%';
+if($query != "%%"){
+  $cleanquery = str_replace("%","",$query);
+  echo "<b>Query: </b>" . $cleanquery;
+}
 echo $_POST["browsers"];
 ?>
 <br><a href="/">Home</a> | <a href="javascript:history.back()">Back</a>
@@ -25,11 +28,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-if ($query == NULL){
+if ($query == "%%"){
   return;
 }else{
-  $sql = "SELECT ID, Manufacturer, Model, Form_Factor, OS_and_Drivers FROM systems WHERE Model LIKE '%". $query ."%'";
-  $result = $conn->query($sql);
+  $stmt = $conn->prepare("SELECT ID, Manufacturer, Model, Form_Factor, OS_and_Drivers FROM systems WHERE Model LIKE ?");
+  $stmt->bind_param(s,$query);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
 }
 
 if ($result->num_rows > 0) {
