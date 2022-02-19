@@ -4,11 +4,11 @@
   <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 </head>
 <h1>Search</h1>
+<br><a href="/">Home</a> | <a href="javascript:history.back()">Back</a>
 <hr>
 <form action="search.php" method="post">
     <input type="text" name="query">&nbsp;<input type="submit">
 </form>
-
 <?php
 $query = '%'.$_POST["query"].'%';
 if($query != "%%"){
@@ -17,7 +17,6 @@ if($query != "%%"){
 }
 echo $_POST["browsers"];
 ?>
-<br><a href="/">Home</a> | <a href="javascript:history.back()">Back</a>
 <hr>
 <?php
 include 'creds.php';
