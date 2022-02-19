@@ -16,7 +16,6 @@ include 'creds.php';
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
-  //die("Connection failed: " . $conn->connect_error);
   $diemsg = "<pre><i>Unable to retrieve database statistics!</i></pre><i>Copyright <a href=\"https://nickandfloppy.com/\">nick and floppy " . date("Y");
   die($diemsg);
 } else {
