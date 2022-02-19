@@ -5,7 +5,7 @@
 <h1>Welcome to <i>NetDrivers</i></h1>
 <hr>
 <ul>
-    <li><a href="search.html">Search the driver database</a></li>
+    <li><a href="search.php">Search the driver database</a></li>
     <li><a href="dev.html">Dev Menu</a></li>
 </ul>
 <hr>

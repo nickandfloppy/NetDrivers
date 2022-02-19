@@ -3,14 +3,18 @@
 	<link rel="stylesheet" href="style.css">
   <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 </head>
-<h1>Search Results</h1>
+<h1>Search</h1>
+<hr>
+<form action="search.php" method="post">
+    <input type="text" name="query">&nbsp;<input type="submit">
+</form>
 
 <?php
 $query = $_POST["query"];
 echo "<b>Query: </b>" . $query;
 echo $_POST["browsers"];
 ?>
-<br><a href="/">Return to dev menu</a> | <a href="/search.html">Return to search</a>
+<br><a href="/">Home</a> | <a href="javascript:history.back()">Back</a>
 <hr>
 <?php
 include 'creds.php';
@@ -21,9 +25,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
-$sql = "SELECT ID, Manufacturer, Model, Form_Factor, OS_and_Drivers FROM systems WHERE Model LIKE '%". $query ."%'";
-$result = $conn->query($sql);
+if ($query == NULL){
+  return;
+}else{
+  $sql = "SELECT ID, Manufacturer, Model, Form_Factor, OS_and_Drivers FROM systems WHERE Model LIKE '%". $query ."%'";
+  $result = $conn->query($sql);
+}
 
 if ($result->num_rows > 0) {
   // output data of each row

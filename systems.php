@@ -5,6 +5,7 @@
     <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 </head>
 <body>
+<br><a href="/">Home</a> | <a href="javascript:history.back()">Back to search</a>
 
 <?php
 include 'err.php';
