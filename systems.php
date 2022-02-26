@@ -2,10 +2,11 @@
 <head>
 	<title>System Info</title>
 	<link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+	<link rel="stylesheet" href="/res/style.css">
 </head>
 <body>
-<br><a href="/">Home</a> | <a href="javascript:history.back()">Back to search</a>
+<a href="/">Home</a> | <a href="javascript:history.back()">Back to search</a><br><br>
 
 <?php
 include 'err.php';
@@ -19,18 +20,19 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
 
 if(isset($_GET['id']))
 {
-	$sql = "SELECT ID, Manufacturer, Model, Form_Factor, OS_and_Drivers FROM systems WHERE ID = " . $_GET['id'];
+	$sql = "SELECT ID, Manufacturer, Model, OS_and_Drivers FROM systems WHERE ID = " . $_GET['id'];
 
 
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
+	echo "<table border>";
 	// output data of each row
 	while($row = $result->fetch_assoc()) {
 		$drv = json_decode($row["OS_and_Drivers"], true);
-		echo "<h1>" . $row["Manufacturer"] . " " . $row["Model"] . "</h1><a href=\"/\">Return to dev menu</a><hr>";
+		echo "<h1><i>" . $row["Manufacturer"] . " " . $row["Model"] . "</i></h1><hr>";
 		foreach ($drv["data"] as $item) {
-			echo "<b>".$item["os"].":</b><br>";
+			echo "<tr><th colspan=\"4\"><b>" . $item["os"] . ":</b></th></tr>";
 			if (count($item["drivers"]) > 0) {
 				$drstr = "";
 				foreach ($item["drivers"] as $driver) {
@@ -38,14 +40,12 @@ if ($result->num_rows > 0) {
 					$driverresult = $conn->query($driversql);
 					while($drvrow = $driverresult->fetch_assoc()) {
 						$fileURL = "./files/" . $drvrow["File_URL"];
-						echo $drvrow["Manufacturer"] . " " . $drvrow["Device_Name"] . " - <a href=\"/drivers.php?id=" . $driver . "\">More Details</a> | <a href=\"" . $fileURL . "\">Download</a><br>";
+						echo "<tr><td class=\"drvdetails\">" . $drvrow["Manufacturer"] . "</td><td class=\"drvdetails\">" . $drvrow["Device_Name"] . "</td><td class=\"drvdetails\"><a href=\"/drivers.php?id=" . $driver . "\">More Details</a></td><td class=\"drvdetails\"><a href=\"" . $fileURL . "\">Download</a></td></tr>";
 					}
 				}
-			} else {
-				echo "No drivers available for " . $item["os"];
 			}
-			echo "<br>";
 		}
+		echo "</table>";
 	}
 } else {
 	echo "Invalid System ID";
