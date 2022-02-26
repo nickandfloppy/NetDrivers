@@ -35,7 +35,7 @@ img {
 
 /* This is the outline round the main forum tables */
 .forumline	{ background-color: #CCCCCC;   border-left: 2px solid #578FB2;  border-top: 2px solid #578FB2;  border-right: 2px solid #74ABB1;  border-bottom: 2px solid #74ABB1;        }
-.footarea   { background-color: #DFE7EE;  background-image: url(/res/jasidogdotcom/images/footile.png);  background-position: bottom;  background-repeat: repeat-x;     }
+.footarea   { background-color: #DFE7EE;  background-image: url(/res/img/footile.png);  background-position: bottom;  background-repeat: repeat-x;     }
 
 /* Main table cell colours and backgrounds */
 td.row1	{ background-color: #DFE7EE; }
@@ -50,7 +50,7 @@ td.row3	{ background-color: #DFE7EE; }
 */
 td.rowpic {
 		background-color: #FFFFFF;
-		background-image: url(/res/jasidogdotcom/images/cellpic2.jpg);
+		background-image: url(/res/img/cellpic2.jpg);
 		background-repeat: repeat-y;
 }
 
@@ -58,16 +58,16 @@ td.rowpic {
 th	{
 	color: White; font-size: 11px; font-weight : bold;
 	background-color: #006699; height: 25px;
-	background-image: url(/res/jasidogdotcom/images/cellpic3.gif);
+	background-image: url(/res/img/cellpic3.gif);
 }
 
 td.cat,td.catHead,td.catSides,td.catLeft,td.catRight,td.catBottom {
-			background-image: url(/res/jasidogdotcom/images/cellpic1.gif);
+			background-image: url(/res/img/cellpic1.gif);
 			background-color:#D1D7DC; height: 24px;
 }
 /* Header stuff */
 .underhead {
-	background-image: url(/res/jasidogdotcom/images/hshadowtile.png);
+	background-image: url(/res/img/hshadowtile.png);
 	background-repeat: repeat-x;
 	background-color: #DFE7EE;
 	padding: 5px 3px 5px 3px;
@@ -75,21 +75,21 @@ td.cat,td.catHead,td.catSides,td.catLeft,td.catRight,td.catBottom {
 }
 /* Avatar bg and post bg areas */
 
-.avback {background-image: url(/res/jasidogdotcom/images/avback.png); 	background-position: left;  background-repeat: repeat-y;    background-color: #DFE7EE;       }
+.avback {background-image: url(/res/img/avback.png); 	background-position: left;  background-repeat: repeat-y;    background-color: #DFE7EE;       }
 .avback2 {    background-color: #DFE7EE;  padding: 3px 4px 3px 4px;        }
-.avbot {background-image: url(/res/jasidogdotcom/images/avbot.png); 	background-position: right;  background-repeat: repeat-x;  padding-right: 3px;  background-color: #DFE7EE;    }
+.avbot {background-image: url(/res/img/avbot.png); 	background-position: right;  background-repeat: repeat-x;  padding-right: 3px;  background-color: #DFE7EE;    }
 .avtop{
-	background-image: url(/res/jasidogdotcom/images/avtop.png);
+	background-image: url(/res/img/avtop.png);
 	background-repeat: repeat-x;
 }
 .avtop-l{
-	background-image: url(/res/jasidogdotcom/images/avtop-l.png);
+	background-image: url(/res/img/avtop-l.png);
 	background-repeat: no-repeat;
 }
 .postbg {      padding-bottom: 10px;  padding-left: 10px;  padding-right: 10px;  padding-top: 10px;  background-color: #DFE7EE;  	 }
-.posthead {background-image: url(/res/jasidogdotcom/images/posthead.png);  background-repeat: repeat-x;  padding-left: 5px;  background-color: #528EB5;  background-position: top;    }
+.posthead {background-image: url(/res/img/posthead.png);  background-repeat: repeat-x;  padding-left: 5px;  background-color: #528EB5;  background-position: top;    }
 
-.postfoot {background-image: url(/res/jasidogdotcom/images/postfoot.png); 	background-repeat: repeat-x;  padding-left: 5px;  background-color: #578FB2;   }
+.postfoot {background-image: url(/res/img/postfoot.png); 	background-repeat: repeat-x;  padding-left: 5px;  background-color: #578FB2;   }
 /*
   Setting additional nice inner borders for the main table cells.
   The names indicate which sides the border will be on.
