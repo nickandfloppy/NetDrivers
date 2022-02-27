@@ -7,7 +7,6 @@
 <body>
 
 <h1>Driver Listing Test</h1>
-<a href="/">Return to dev menu</a>
 <hr>
 <?php
 include 'creds.php';

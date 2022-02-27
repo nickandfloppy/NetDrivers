@@ -10,7 +10,6 @@
 <?php
 include 'creds.php';
 
-echo "<a href=\"/link.php?type=driver&id=" . $_GET['id'] . "\">Linkback</a><br><br>";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -31,6 +30,7 @@ if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 		$drv = json_decode($row["OS_and_Drivers"], true);
 		echo "<h1><i>" . $row["Manufacturer"] . " " . $row["Model"] . "</i></h1><hr>";
+		echo "<a href=\"/link.php?type=system&id=" . $_GET['id'] . "\">Linkback</a><br><br>";
 		foreach ($drv["data"] as $item) {
 			echo "<tr><th colspan=\"4\"><b>" . $item["os"] . ":</b></th></tr>";
 			if (count($item["drivers"]) > 0) {
