@@ -12,6 +12,8 @@
 <?php
 include 'creds.php';
 
+echo "<a href=\"/link.php?type=driver&id=" . $_GET['id'] . "\">Linkback</a><br><br>";
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection

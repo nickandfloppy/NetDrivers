@@ -9,8 +9,9 @@
 <a href="/">Home</a> | <a href="javascript:history.back()">Back to search</a><br><br>
 
 <?php
-include 'err.php';
 include 'creds.php';
+
+echo "<a href=\"/link.php?type=driver&id=" . $_GET['id'] . "\">Linkback</a><br><br>";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
