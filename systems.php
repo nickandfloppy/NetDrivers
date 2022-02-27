@@ -6,7 +6,6 @@
 	<link rel="stylesheet" href="/res/style.css">
 </head>
 <body>
-<a href="/">Home</a> | <a href="javascript:history.back()">Back to search</a><br><br>
 
 <?php
 include 'creds.php';
