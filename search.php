@@ -94,8 +94,8 @@ if ($queryScope == "systems") {
 		$stmt->bind_param(s,$query);
 		$stmt->execute();
 		$result = $stmt->get_result();
-		echo $result->num_rows . " results for \"" . $cleanquery . "\" in driver files<hr>";
 		if ($result->num_rows > 0) {
+			echo $result->num_rows . " results for \"" . $cleanquery . "\" in driver files<hr>";
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
 				$date = new DateTime($row["Date"]);
@@ -103,7 +103,7 @@ if ($queryScope == "systems") {
 				echo "<hr>";
 			}
 		} else {
-			echo "No Results for \"" . $cleanquery . "\"";
+			echo "No Results for \"" . $cleanquery . "\" in driver files";
 		}
 	}
 }
