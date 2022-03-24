@@ -23,6 +23,11 @@ $systemcount = $row[0];
 $result = $conn->query("SELECT COUNT(*) FROM `drivers`");
 $row = $result->fetch_row();
 $drivercount = $row[0];
+
+$result = $conn->query("SELECT COUNT(*) FROM `devices`");
+$row = $result->fetch_row();
+$devicecount = $row[0];
+
 $conn->close();
 ?>
 
@@ -37,6 +42,10 @@ $conn->close();
 <tr>
 <td>Systems</td>
 <td><?php echo $systemcount ?></td>
+</tr>
+<tr>
+<td>Devices</td>
+<td><?php echo $devicecount ?></td>
 </tr>
 </table>
 

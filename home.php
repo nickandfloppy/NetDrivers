@@ -2,6 +2,7 @@
     <title>NetDrivers Index</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 	<link rel="stylesheet" href="/res/style.css">
+    <!--<script>javascript:location.reload(true)</script>-->
 </head>
 <h1>Welcome to <i>NetDrivers</i></h1>
 <hr>
@@ -28,7 +29,11 @@ $result = $conn->query("SELECT COUNT(*) FROM `drivers`");
 $row = $result->fetch_row();
 $drivercount = $row[0];
 
-echo "<i>Serving " . $drivercount . " drivers for " . $systemcount . " systems since 2022!</i>";
+$result = $conn->query("SELECT COUNT(*) FROM `devices`");
+$row = $result->fetch_row();
+$devicecount = $row[0];
+
+echo "<i>Serving " . $drivercount . " drivers for " . $systemcount . " systems and " . $devicecount . " devices since 2022!</i>";
 include 'footer.php';
 }
 ?>
