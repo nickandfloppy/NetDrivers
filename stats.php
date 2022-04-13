@@ -20,15 +20,17 @@ $result = $conn->query("SELECT COUNT(*) FROM `systems`");
 $row = $result->fetch_row();
 $systemcount = $row[0];
 
-$result = $conn->query("SELECT COUNT(*) FROM `drivers`");
+$result = $conn->query("SELECT COUNT(*) FROM `files`");
 $row = $result->fetch_row();
-$drivercount = $row[0];
+$filecount = $row[0];
 
 $result = $conn->query("SELECT COUNT(*) FROM `devices`");
 $row = $result->fetch_row();
 $devicecount = $row[0];
 
 $conn->close();
+
+$drivercount = $drivercount_dev + $drivercount_sys;
 ?>
 
 <table border="1">
@@ -37,7 +39,7 @@ $conn->close();
 <th>Count</th>
 <tr>
 <td>Files</td>
-<td><?php echo $drivercount ?></td>
+<td><?php echo $filecount ?></td>
 </tr>
 <tr>
 <td>Systems</td>
