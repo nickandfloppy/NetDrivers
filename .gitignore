@@ -1,4 +1,5 @@
 .vscode/
+.idea/
 creds.php
 files/
 dev/
