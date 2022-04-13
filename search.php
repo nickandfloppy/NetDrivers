@@ -99,7 +99,7 @@ if ($queryScope == "systems") {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
 				$date = new DateTime($row["Date"]);
-				echo "<p><b>Filename:</b> ". $row["File_Name"] . "<br><b>Version:</b> " . $row["Version"] . "<br><b>Date:</b> " . $date->format("d M Y") . "<br><a href=\"/file.php?id=" . $row["ID"] . "\"><button type=\"button\">Download</button></a></p>";
+				echo "<p><b>Filename:</b> ". $row["File_Name"] . "<br><b>Version:</b> " . $row["Version"] . "<br><b>Date:</b> " . $date->format("d M Y") . "<br><a href=\"/download.php?id=" . $row["ID"] . "\"><button type=\"button\">Download</button></a></p>";
 				echo "<hr>";
 			}
 		} else {
