@@ -15,10 +15,6 @@ if(isset($_GET['type']) && isset($_GET['id'])) {
         $url = "/systems.php?id=" . $id;
         echo "<h1>Redirecting...</h1><p>If the page does not redirect automatically, <a href=\"" . $url . "\">click here</a>";
         echo "<meta http-equiv=\"refresh\" content=\"0; URL=" . $url . "\">";
-    } else if ($type == 'driver') {
-        $url = "/drivers.php?id=" . $id;
-        echo "<h1>Redirecting...</h1><p>If the page does not redirect automatically, <a href=\"" . $url . "\">click here</a>";
-        echo "<meta http-equiv=\"refresh\" content=\"0; URL=" . $url . "\">";
     } else {
         echo "Invalid type!";
     }
