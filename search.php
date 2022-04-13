@@ -15,7 +15,7 @@ value="systems">Systems<input type="radio" name="scope"
 <?php if (isset($scope) && $scope=="devices") echo "checked";?>
 value="devices">Devices<input type="radio" name="scope"
 <?php if (isset($scope) && $scope=="drivers") echo "checked";?>
-value="drivers">Driver Filename
+value="drivers">Filename
 </form>
 <br>
 <?php
@@ -90,12 +90,12 @@ if ($queryScope == "systems") {
 	if ($query == "%%") {
 		return;
 	} else {
-		$stmt = $conn->prepare("SELECT ID, File_Name, File_Path, Version FROM drivers WHERE File_Name LIKE ?");
+		$stmt = $conn->prepare("SELECT ID, File_Name, File_Path, Version FROM files WHERE File_Name LIKE ?");
 		$stmt->bind_param(s,$query);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		if ($result->num_rows > 0) {
-			echo $result->num_rows . " results for \"" . $cleanquery . "\" in driver files<hr>";
+			echo $result->num_rows . " results for \"" . $cleanquery . "\" in files<hr>";
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
 				$date = new DateTime($row["Date"]);
@@ -103,7 +103,7 @@ if ($queryScope == "systems") {
 				echo "<hr>";
 			}
 		} else {
-			echo "No Results for \"" . $cleanquery . "\" in driver files";
+			echo "No Results for \"" . $cleanquery . "\" in files";
 		}
 	}
 }
