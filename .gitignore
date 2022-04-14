@@ -11,3 +11,10 @@ Thumbs.db
 # IDE-specific files
 .idea/
 .vscode/
+
+#Log files
+*.log
+
+#Backup files
+*.bak
+*.old
