@@ -1,10 +1,13 @@
+# Internal files
 creds.php
 files/
 dev/
 staff/
 
-#System/hidden files
-Thumbs.db
+# OS system files
 .DS_Store
-.vscode/
+Thumbs.db
+
+# IDE-specific files
 .idea/
+.vscode/
