@@ -3,6 +3,7 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="/res/style.css">
 	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+	<!-- succ -->
 </head>
 <h1>NetDrivers Search</h1>
 <br><a href="/">Home</a> | <a href="javascript:history.back()">Back</a>
