@@ -1,8 +1,10 @@
-.vscode/
-.idea/
 creds.php
 files/
 dev/
 staff/
+
+#System/hidden files
 Thumbs.db
 .DS_Store
+.vscode/
+.idea/
