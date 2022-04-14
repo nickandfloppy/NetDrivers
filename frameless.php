@@ -1,5 +1,5 @@
 <head>
-    <title>NetDrivers Index</title>
+    <title>NetDrivers / Home</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 	<link rel="stylesheet" href="/res/style.css">
     <!--<script>javascript:location.reload(true)</script>-->

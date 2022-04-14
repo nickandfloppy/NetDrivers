@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Downloading file</title>
+	<title>Downloading file...</title>
 	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 	<link rel="stylesheet" href="/res/style.css">
 </head>

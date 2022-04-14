@@ -1,5 +1,5 @@
 <head>
-    <title>NetDrivers Statistics</title>
+    <title>NetDrivers / Statistics</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 	<link rel="stylesheet" href="/res/style.css">
 </head>

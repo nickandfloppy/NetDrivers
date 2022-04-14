@@ -1,6 +1,5 @@
 <html>
 <head>
-	<title>Linkback</title>
 	<link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
 	<link rel="stylesheet" href="/res/style.css">

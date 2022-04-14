@@ -1,5 +1,11 @@
 <head>
-	<title>Query results for <?php echo $_POST["query"]; ?></title>
+	<?php
+	if (isset($_POST["query"])) {
+		echo "<title>Query results for " . $_POST["query"]  . "</title>";
+	} else {
+		echo "<title>Netdrivers / Search";
+	}
+	?>
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="/res/style.css">
 	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
