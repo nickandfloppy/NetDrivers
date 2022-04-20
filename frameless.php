@@ -1,9 +1,15 @@
 <head>
-    <title>NetDrivers / Statistics</title>
+    <title>NetDrivers / Home</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
 	<link rel="stylesheet" href="/res/style.css">
+    <!--<script>javascript:location.reload(true)</script>-->
 </head>
-<h1><i>Website Statistics</i></h1>
+<h1>Welcome to <i>NetDrivers</i></h1>
+<hr>
+<ul>
+    <li><a href="./search.php" target="main">Search</a><br></li>
+    <li><a href="./stats.php" target="main">Site Stats</a><br></li>
+</ul>
 <hr>
 <?php
 include 'creds.php';
@@ -20,37 +26,15 @@ $result = $conn->query("SELECT COUNT(*) FROM `systems`");
 $row = $result->fetch_row();
 $systemcount = $row[0];
 
-$result = $conn->query("SELECT COUNT(*) FROM `files`");
+$result = $conn->query("SELECT COUNT(*) FROM `drivers`");
 $row = $result->fetch_row();
-$filecount = $row[0];
+$drivercount = $row[0];
 
 $result = $conn->query("SELECT COUNT(*) FROM `devices`");
 $row = $result->fetch_row();
 $devicecount = $row[0];
 
-$conn->close();
-
-$drivercount = $drivercount_dev + $drivercount_sys;
-?>
-
-<table border="1">
-<tr>
-<th>Item</th>
-<th>Count</th>
-<tr>
-<td>Files</td>
-<td><?php echo $filecount ?></td>
-</tr>
-<tr>
-<td>Systems</td>
-<td><?php echo $systemcount ?></td>
-</tr>
-<tr>
-<td>Devices</td>
-<td><?php echo $devicecount ?></td>
-</tr>
-</table>
-
-<?php
+echo "<i>Serving " . $drivercount . " drivers for " . $systemcount . " systems and " . $devicecount . " devices since 2022!</i>";
+include 'footer.php';
 }
 ?>
