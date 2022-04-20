@@ -1,5 +1,11 @@
 <head>
-	<title>Query Results</title>
+	<?php
+	if (isset($_POST["query"])) {
+		echo "<title>Query results for " . $_POST["query"]  . "</title>";
+	} else {
+		echo "<title>Netdrivers / Search";
+	}
+	?>
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="/res/style.css">
 	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
@@ -15,7 +21,7 @@ value="systems">Systems<input type="radio" name="scope"
 <?php if (isset($scope) && $scope=="devices") echo "checked";?>
 value="devices">Devices<input type="radio" name="scope"
 <?php if (isset($scope) && $scope=="drivers") echo "checked";?>
-value="drivers">Driver Filename
+value="drivers">Filename
 </form>
 <br>
 <?php
@@ -90,20 +96,20 @@ if ($queryScope == "systems") {
 	if ($query == "%%") {
 		return;
 	} else {
-		$stmt = $conn->prepare("SELECT ID, File_Name, File_Path, Version FROM drivers WHERE File_Name LIKE ?");
+		$stmt = $conn->prepare("SELECT ID, File_Name, File_Path, Version FROM files WHERE File_Name LIKE ?");
 		$stmt->bind_param(s,$query);
 		$stmt->execute();
 		$result = $stmt->get_result();
-		echo $result->num_rows . " results for \"" . $cleanquery . "\" in driver files<hr>";
 		if ($result->num_rows > 0) {
+			echo $result->num_rows . " results for \"" . $cleanquery . "\" in files<hr>";
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
 				$date = new DateTime($row["Date"]);
-				echo "<p><b>Filename:</b> ". $row["File_Name"] . "<br><b>Version:</b> " . $row["Version"] . "<br><b>Date:</b> " . $date->format("d M Y") . "<br><a href=\"/file.php?id=" . $row["ID"] . "\"><button type=\"button\">Download</button></a></p>";
+				echo "<p><b>Filename:</b> ". $row["File_Name"] . "<br><b>Version:</b> " . $row["Version"] . "<br><b>Date:</b> " . $date->format("d M Y") . "<br><a href=\"/download.php?id=" . $row["ID"] . "\"><button type=\"button\">Download</button></a></p>";
 				echo "<hr>";
 			}
 		} else {
-			echo "No Results for \"" . $cleanquery . "\"";
+			echo "No Results for \"" . $cleanquery . "\" in files";
 		}
 	}
 }
