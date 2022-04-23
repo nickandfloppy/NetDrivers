@@ -1,8 +1,6 @@
 <html>
 <head>
-	<link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" type="image/png" href="/favicon.png">
-	<link rel="stylesheet" href="/res/style.css">
+	<?php include 'head.php'; ?>
 </head>
 <body>
 

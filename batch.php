@@ -1,7 +1,6 @@
 <html>
 <head>
-	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
-	<link rel="stylesheet" href="/res/style.css">
+	<?php $title = "Batch Download"; include 'head.php'; ?>
 </head>
 <body>
 <h1>Batch download</h1>

@@ -1,12 +1,15 @@
 <html>
 <head>
-	<title>NetDrivers / System Info</title>
-	<link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" type="image/png" href="/favicon.png">
-	<link rel="stylesheet" href="/res/style.css">
+	<?php $title = "System Info"; include 'head.php'; ?>
 </head>
 <body>
-
+<a href="/"><table><tr>
+	<td><img src="/favicon.png" width="50"></td>
+	<td><h1 style="margin: 0">NetDrivers</h1><i>Archiving Drivers Since April 2022</i></td>
+</tr></table></a>
+<hr>
+<?php include 'nav.html'; ?>
+<hr>
 <?php
 include 'creds.php';
 
@@ -29,7 +32,7 @@ if ($result->num_rows > 0) {
 	// output data of each row
 	while($row = $result->fetch_assoc()) {
 		$drv = json_decode($row["OS_and_Drivers"], true);
-		echo "<h1><i>" . $row["Manufacturer"] . " " . $row["Model"] . "</i></h1><hr>";
+		echo "<h2><i>" . $row["Manufacturer"] . " " . $row["Model"] . "</i></h2><hr>";
 		echo "<a href=\"/link.php?type=system&id=" . $_GET['id'] . "\">Linkback</a><br><br>";
 		foreach ($drv["data"] as $item) {
 			echo "<tr><th colspan=\"4\"><b>" . $item["os"] . ":</b></th></tr>";

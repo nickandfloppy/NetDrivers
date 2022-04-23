@@ -1,9 +1,12 @@
 <head>
-    <title>NetDrivers / Statistics</title>
-    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
-	<link rel="stylesheet" href="/res/style.css">
+		<?php $title = "Statistics"; include 'head.php'; ?>
 </head>
-<h1><i>Website Statistics</i></h1>
+<a href="/"><table><tr>
+	<td><img src="/favicon.png" width="50"></td>
+	<td><h1 style="margin: 0">NetDrivers</h1><i>Archiving Drivers Since April 2022</i></td>
+</tr></table></a>
+<hr>
+<?php include 'nav.html'; ?>
 <hr>
 <?php
 include 'creds.php';
@@ -12,8 +15,8 @@ include 'creds.php';
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
-  $diemsg = "<pre><i>Unable to retrieve database statistics!</i></pre><i>Copyright <a href=\"https://nickandfloppy.com/\">nick and floppy " . date("Y");
-  die($diemsg);
+	$diemsg = "<pre><i>Unable to retrieve database statistics!</i></pre><i>Copyright <a href=\"https://nickandfloppy.com/\">nick and floppy " . date("Y");
+	die($diemsg);
 } else {
 
 $result = $conn->query("SELECT COUNT(*) FROM `systems`");

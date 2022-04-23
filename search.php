@@ -1,17 +1,16 @@
 <head>
 	<?php
-	if (isset($_POST["query"])) {
-		echo "<title>Query results for " . $_POST["query"]  . "</title>";
-	} else {
-		echo "<title>Netdrivers / Search";
-	}
-	?>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="/res/style.css">
-	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+    if (isset($_POST["query"])) $title = "Search for \"" . $_POST["query"] . "\"";
+    else $title = "Search";
+    include 'head.php';
+    ?>
 </head>
-<h1>NetDrivers Search</h1>
-<br><a href="/">Home</a> | <a href="javascript:history.back()">Back</a>
+<a href="/"><table><tr>
+	<td><img src="/favicon.png" width="50"></td>
+	<td><h1 style="margin: 0">NetDrivers</h1><i>Archiving Drivers Since April 2022</i></td>
+</tr></table></a>
+<hr>
+<?php include 'nav.html'; ?>
 <hr>
 <form action="search.php" method="post">
 		<input type="text" name="query">&nbsp;<input type="submit"><br>
@@ -23,9 +22,7 @@ value="devices">Devices<input type="radio" name="scope"
 <?php if (isset($scope) && $scope=="drivers") echo "checked";?>
 value="drivers">Filename
 </form>
-<br>
 <?php
-
 function test_input($data) {
 	$data = trim($data);
 	$data = stripslashes($data);
