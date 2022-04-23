@@ -1,6 +1,6 @@
 # NetDrivers
 
-A driver storage and indexing website.
+A driver archival and indexing website.
 
 ## Contributors
 - [nick99nack](https://github.com/nick99nack)
