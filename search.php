@@ -51,7 +51,7 @@ if ($queryScope == "systems") {
 		return;
 	} else {
 		$stmt = $conn->prepare("SELECT ID, Manufacturer, Model FROM systems WHERE Model LIKE ?");
-		$stmt->bind_param(s,$query);
+		$stmt->bind_param('s',$query);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		echo $result->num_rows . " results for \"" . $cleanquery . "\" in " . $queryScope . "<hr>";
@@ -72,7 +72,7 @@ if ($queryScope == "systems") {
 		return;
 	} else {
 		$stmt = $conn->prepare("SELECT ID, Manufacturer, Device_Name FROM devices WHERE Device_Name LIKE ? OR Manufacturer LIKE ?");
-		$stmt->bind_param(ss,$query, $query);
+		$stmt->bind_param('ss',$query, $query);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		echo $result->num_rows . " results for \"" . $cleanquery . "\" in " . $queryScope . "<hr>";
@@ -93,7 +93,7 @@ if ($queryScope == "systems") {
 		return;
 	} else {
 		$stmt = $conn->prepare("SELECT ID, File_Name, File_Path, Version FROM files WHERE File_Name LIKE ?");
-		$stmt->bind_param(s,$query);
+		$stmt->bind_param('s',$query);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		if ($result->num_rows > 0) {
