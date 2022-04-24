@@ -1,6 +1,12 @@
 <?php
-echo "<link rel=\"stylesheet\" href=\"/src/style.css\">\n";
-echo "    <link rel=\"icon\" type=\"image/png\" href=\"/favicon.png\">\n";
-if (isset($title)) echo "    <title>NetDrivers / ".$title."</title>\n";
-else echo "    <title>NetDrivers</title>\n";
+declare(strict_types=1);
 ?>
+
+<link rel="stylesheet" href="/src/style.css">
+<link rel=\"icon\" type=\"image/png\" href=\"/favicon.png\">
+<title>NetDrivers
+   <?php
+   if (isset($title)) {
+      echo ' / ' . $title;
+   }
+   ?></title>
