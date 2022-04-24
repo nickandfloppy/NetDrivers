@@ -35,8 +35,7 @@ if($query != "%%"){
 	$cleanquery = str_replace("%","",$query);
 	//echo "Results for \"" . $cleanquery . "\" in " . $queryScope;
 }
-?>
-<?php
+
 include 'creds.php';
 
 // Create connection
