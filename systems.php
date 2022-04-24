@@ -5,7 +5,7 @@
 <body>
 <a href="/"><table><tr>
 	<td><img src="/favicon.png" width="50"></td>
-	<td><h1 style="margin: 0">NetDrivers</h1><i>Archiving Drivers Since April 2022</i></td>
+	<td><h1 style="margin: 0">NetDrivers</h1><i>Archiving Drivers Since February 2022</i></td>
 </tr></table></a>
 <hr>
 <?php include 'nav.html'; ?>
