@@ -23,3 +23,11 @@ a:active {
   color: #ffffff;
   text-decoration: underline;
 }
+
+h1.header {
+  margin: 0px;
+}
+
+h2.title {
+  margin: 0px;
+}
