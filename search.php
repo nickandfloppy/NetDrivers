@@ -63,7 +63,7 @@ function listName(string $list, array $row): string {
       if ($list === 'systems') {
          $output = $row['Manufacturer'] . ' ' . $row['Model'];
       } else {
-         $output = $row['Manufacturer'] . ' ' . $row['Dlevice_Name'];
+         $output = $row['Manufacturer'] . ' ' . $row['Device_Name'];
       }
 
       return '<h2><a href="/' . $list . '.php?id=' . $row['ID'] . '">'
