@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 ?>
+<html>
 <head>
    <?php
    $title = 'Home';
