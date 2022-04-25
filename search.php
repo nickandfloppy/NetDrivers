@@ -12,10 +12,10 @@ declare(strict_types=1);
    require('head.php');
    ?>
 </head>
-<a href="/">
+<a href=".">
 	<table>
 		<tr>
-			<td><img src="/favicon.png" width="50"></td>
+			<td><img src="favicon.png" width="50"></td>
 			<td><h1 style="margin: 0">NetDrivers</h1><i>Archiving Drivers Since February 2022</i></td>
 		</tr>
 	</table>
@@ -66,14 +66,14 @@ function listName(string $list, array $row): string {
          $output = $row['Manufacturer'] . ' ' . $row['Device_Name'];
       }
 
-      return '<h2><a href="/' . $list . '.php?id=' . $row['ID'] . '">'
+      return '<h2><a href="' . $list . '.php?id=' . $row['ID'] . '">'
          . $output
          . '</a></h2>';
    } else if ($list === 'files') {
       $date = new DateTime($row['Date']);
 
       return '<p><b>Filename:</b> ' . $row['File_Name'] . '<br><b>Version:</b> ' . $row['Version'] . '<br><b>Date:</b> ' . $date->format('d M Y') .
-         '<br><a href="/download.php?id=' . $row['ID'] . '"><button type="button">Download</button></a></p>';
+         '<br><a href="download.php?id=' . $row['ID'] . '"><button type="button">Download</button></a></p>';
    }
 
    return '';

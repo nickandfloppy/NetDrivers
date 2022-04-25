@@ -8,11 +8,11 @@ declare(strict_types=1);
    require('head.php'); ?>
 </head>
 <body>
-<a href="/">
+<a href=".">
 	<table>
 		<tr>
-			<td><img src="/favicon.png" width="50"></td>
-			<td><h1 class="header">NetDrivers</h1><i>Archiving Drivers Since February 2022</i></td>
+			<td><img src="favicon.png" width="50"></td>
+			<td><h1 style="margin: 0">NetDrivers</h1><i>Archiving Drivers Since February 2022</i></td>
 		</tr>
 	</table>
 </a>
@@ -38,12 +38,12 @@ if (isset($_GET['id'])) {
    $result = $stmt->get_result();
 
    if ($result->num_rows > 0) {
+      echo '<table border>';
       // output data of each row
       foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
          $drv = json_decode($row['OS_and_Drivers'], true, 512, JSON_THROW_ON_ERROR);
-         echo '<h2 class="title"><i>' . $row['Manufacturer'] . ' ' . $row['Model'] . '</i></h2><hr>';
+         echo '<h2><i>' . $row['Manufacturer'] . ' ' . $row['Model'] . '</i></h2><hr>';
          echo '<a href="/link.php?type=system&id=' . $_GET['id'] . '">Linkback</a><br><br>';
-         echo '<table border="1">';
          foreach ($drv['data'] as $item) {
             echo '<tr><th colspan="4"><b>' . $item['os'] . ':</b></th></tr>';
             if (count($item['drivers']) > 0) {
@@ -62,7 +62,7 @@ if (isset($_GET['id'])) {
                }
             }
          }
-         echo '</table><br>';
+         echo '</table>';
       }
    } else {
       echo 'Invalid System ID';
