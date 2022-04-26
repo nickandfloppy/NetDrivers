@@ -20,7 +20,7 @@ declare(strict_types=1);
 <?php include 'nav.html'; ?>
 <hr>
 <?php
-include 'creds.php';
+require('creds.php');
 
 // Create connection
 // @TODO: See `stats.php` line 24
@@ -32,7 +32,7 @@ if ($conn->connect_error) {
 }
 
 if (isset($_GET['id'])) {
-   $stmt = $conn->prepare('SELECT ID, Manufacturer, Model, OS_and_Drivers FROM systems WHERE ID = ?');
+   $stmt = $conn->prepare('SELECT id, manufacturer, model, os_and_drivers FROM systems WHERE id = ?');
    $stmt->bind_param('i', $_GET['id']);
    $stmt->execute();
    $result = $stmt->get_result();
@@ -40,8 +40,8 @@ if (isset($_GET['id'])) {
    if ($result->num_rows > 0) {
       // output data of each row
       foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
-         $drv = json_decode($row['OS_and_Drivers'], true, 512, JSON_THROW_ON_ERROR);
-         echo '<h2 class="title"><i>' . $row['Manufacturer'] . ' ' . $row['Model'] . '</i></h2><hr>';
+         $drv = json_decode($row['os_and_drivers'], true, 512, JSON_THROW_ON_ERROR);
+         echo '<h2 class="title"><i>' . $row['manufacturer'] . ' ' . $row['model'] . '</i></h2><hr>';
          echo '<a href="/link.php?type=system&id=' . $_GET['id'] . '">Linkback</a><br><br>';
          echo '<table border="1">';
          foreach ($drv['data'] as $item) {
@@ -49,13 +49,13 @@ if (isset($_GET['id'])) {
             if (count($item['drivers']) > 0) {
                $drstr = '';
                foreach ($item['drivers'] as $driver) {
-                  $driverstmt = $conn->prepare('SELECT Manufacturer, Device_Name, File_URL FROM drivers WHERE id = ?');
+                  $driverstmt = $conn->prepare('SELECT manufacturer, device_name, file_url FROM drivers WHERE id = ?');
                   $driverstmt->bind_param('i', $_GET['id']);
                   $driverstmt->execute();
                   $driverresult = $stmt->get_result();
                   foreach ($driverresult->fetch_all(MYSQLI_ASSOC) as $drvrow) {
-                     $fileURL = './files/' . $drvrow['File_URL'];
-                     echo '<tr><td class="drvdetails">' . $drvrow['Manufacturer'] . '</td><td class="drvdetails">' . $drvrow['Device_Name']
+                     $fileURL = './files/' . $drvrow['file_url'];
+                     echo '<tr><td class="drvdetails">' . $drvrow['manufacturer'] . '</td><td class="drvdetails">' . $drvrow['device_name']
                         . '</td><td class="drvdetails"><a href="/drivers.php?id=' . $driver . '">More Details</a></td><td class="drvdetails">'
                         . '<a href="' . $fileURL . '">Download</a></td></tr>';
                   }

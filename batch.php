@@ -21,7 +21,7 @@ require('creds.php');
 if (isset($_GET['files'])) {
    $files    = '[' . $_GET['files'] . ']';
    $filesarr = json_decode($files, true, 512, JSON_THROW_ON_ERROR);
-   $sql      = "SELECT ID, File_Name, File_Path, Version, Date, Mirrors FROM files WHERE ";
+   $sql      = "SELECT id, file_name, file_path, version, date, mirrors FROM files WHERE ";
 
    $i = 0;
    foreach ($filesarr as $file) {
@@ -42,7 +42,7 @@ if (isset($_GET['files'])) {
 
    if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
-         $filepath = "/mnt/data1" . $row["File_Path"] . $row["File_Name"];
+         $filepath = "/mnt/data1" . $row["file_path"] . $row["file_name"];
          echo "<b>Path:</b> " . $filepath . "<br>";
       }
    } else {

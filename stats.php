@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 <head>
    <?php $title = 'Statistics';
-   include 'head.php'; ?>
+   require('head.php'); ?>
 </head>
 <a href="/">
 	<table>
@@ -16,9 +16,9 @@ declare(strict_types=1);
 </a>
 <hr>
 <?php
-include 'nav.html';
+require('nav.html');
 echo '<hr/>'; // No need to close the php tag.
-include 'creds.php';
+require('creds.php');
 
 // Create connection
 $conn = new mysqli(CONF["servername"], CONF["username"], CONF["password"], CONF["dbname"]);
@@ -44,9 +44,6 @@ $row         = $result->fetch_row();
 $devicecount = $row[0];
 
 $conn->close();
-
-// @TODO: Variables don't exist? Variable isn't used anywhere?
-// - $drivercount = $drivercount_dev + $drivercount_sys;
 ?>
 
 <table border="1">

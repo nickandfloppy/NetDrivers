@@ -48,10 +48,8 @@ if (!isset($_POST['scope'])) {
  *
  * @return string Clean string
  */
-// @TODO: The name of this function doesn't make any sense?
-//        From what I've understood, it just cleans it
-//        Refactoring to cleanInput() would make much more sense
-function test_input(string $data): string {
+
+function cleanInput(string $data): string {
    $data = trim($data);
    $data = stripslashes($data);
 
@@ -61,25 +59,25 @@ function test_input(string $data): string {
 function listName(string $list, array $row): string {
    if ($list === 'systems' || $list === 'devices') {
       if ($list === 'systems') {
-         $output = $row['Manufacturer'] . ' ' . $row['Model'];
+         $output = $row['manufacturer'] . ' ' . $row['model'];
       } else {
-         $output = $row['Manufacturer'] . ' ' . $row['Device_Name'];
+         $output = $row['manufacturer'] . ' ' . $row['device_name'];
       }
 
-      return '<h2><a href="/' . $list . '.php?id=' . $row['ID'] . '">'
+      return '<h2><a href="/' . $list . '.php?id=' . $row['id'] . '">'
          . $output
          . '</a></h2>';
    } else if ($list === 'files') {
-      $date = new DateTime($row['Date']);
+      $date = new DateTime($row['date']);
 
-      return '<p><b>Filename:</b> ' . $row['File_Name'] . '<br><b>Version:</b> ' . $row['Version'] . '<br><b>Date:</b> ' . $date->format('d M Y') .
-         '<br><a href="/download.php?id=' . $row['ID'] . '"><button type="button">Download</button></a></p>';
+      return '<p><b>Filename:</b> ' . $row['file_name'] . '<br><b>Version:</b> ' . $row['version'] . '<br><b>Date:</b> ' . $date->format('d M Y') .
+         '<br><a href="/download.php?id=' . $row['id'] . '"><button type="button">Download</button></a></p>';
    }
 
    return '';
 }
 
-$queryScope = test_input($_POST['scope']);
+$queryScope = cleanInput($_POST['scope']);
 
 $query      = null;
 $cleanquery = '';
@@ -109,7 +107,7 @@ $list   = '';
 switch ($queryScope) {
    case 'systems':
    {
-      $stmt = $conn->prepare('SELECT ID, Manufacturer, Model FROM systems WHERE Model LIKE ?');
+      $stmt = $conn->prepare('SELECT id, manufacturer, model FROM systems WHERE model LIKE ?');
       $stmt->bind_param('s', $query);
       $stmt->execute();
       $result = $stmt->get_result();
@@ -117,7 +115,7 @@ switch ($queryScope) {
    }
    case 'devices':
    {
-      $stmt = $conn->prepare('SELECT ID, Manufacturer, Device_Name FROM devices WHERE Device_Name LIKE ? OR Manufacturer LIKE ?');
+      $stmt = $conn->prepare('SELECT id, manufacturer, device_name FROM devices WHERE device_name LIKE ? OR manufacturer LIKE ?');
       $stmt->bind_param('ss', $query, $query);
       $stmt->execute();
       $result = $stmt->get_result();
@@ -125,7 +123,7 @@ switch ($queryScope) {
    }
    case 'files':
    {
-      $stmt = $conn->prepare("SELECT ID, File_Name, File_Path, Version FROM files WHERE File_Name LIKE ?");
+      $stmt = $conn->prepare("SELECT id, file_name, file_path, version FROM files WHERE file_name LIKE ?");
       $stmt->bind_param('s', $query);
       $stmt->execute();
       $result = $stmt->get_result();
