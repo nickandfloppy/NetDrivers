@@ -21,10 +21,7 @@ echo '<hr/>'; // No need to close the php tag.
 include 'creds.php';
 
 // Create connection
-// @TODO: Make a $_CONF array with the content, instead of relying on single variables.
-//        Makes things more organized.
-//        Ideally also a const. Credentials should never ever be variable.
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli(CONF["servername"], CONF["username"], CONF["password"], CONF["dbname"]);
 // Check connection
 if ($conn->connect_error) {
    $diemsg = '<pre><i>Unable to retrieve database statistics!</i></pre><i>Copyright <a href="https://nickandfloppy.com/">nick and floppy ' . date('Y');
