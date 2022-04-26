@@ -32,7 +32,7 @@ if (isset($_GET['files'])) {
 
    // Create connection
    // @TODO: See `stats.php` line 24
-   $conn = new mysqli($servername, $username, $password, $dbname);
+   $conn = new mysqli(CONF["servername"], CONF["username"], CONF["password"], CONF["dbname"]);
    // Check connection
    if ($conn->connect_error) {
       die('Connection failed: ' . $conn->connect_error);
