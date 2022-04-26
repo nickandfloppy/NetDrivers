@@ -5,5 +5,5 @@ const CONF = array(
     "username" => "dbusername",
     "password" => "dbpassword",
     "dbname" => "databasename"
-)
+);
 ?>
