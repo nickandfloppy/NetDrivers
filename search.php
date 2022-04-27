@@ -123,7 +123,7 @@ switch ($queryScope) {
    }
    case 'files':
    {
-      $stmt = $conn->prepare("SELECT id, file_name, file_path, version FROM files WHERE file_name LIKE ?");
+      $stmt = $conn->prepare("SELECT id, file_name, file_path, version, date FROM files WHERE file_name LIKE ?");
       $stmt->bind_param('s', $query);
       $stmt->execute();
       $result = $stmt->get_result();

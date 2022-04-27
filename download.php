@@ -50,7 +50,7 @@ if (isset($_GET['id'])) {
          $mirrors = json_decode($row['mirrors'], true, 512, JSON_THROW_ON_ERROR);
          echo '<br><b>Select from the following mirrors...</b><br>';
          foreach ($mirr_res->fetch_all(MYSQLI_ASSOC) as $mirrorRW) {
-            if (in_array($mirrorRW["ID"], $mirrors, true)) {
+            if (in_array($mirrorRW["id"], $mirrors, true)) {
                $url = $mirrorRW['address'] . $mirrorRW['base_url'] . $row['file_path'] . $row['file_name'];
                echo '<a href="' . ($mirrorRW['https'] === true ? 'https' : 'http') . '://' . $url . '">Mirror '
                   . $mirrorRW['id'] . ' (' . $mirrorRW['region'] . ')</a><br>';
