@@ -24,17 +24,13 @@ declare(strict_types=1);
 <?php require('nav.html'); ?>
 <hr>
 <form action="search.php" method="post">
-	<input type="text" name="query">&nbsp;<input type="submit"><br>
-	<input type="radio" name="scope" checked="true"
-       <?php
-       // @TODO: This should be moved to a function. Furthermore, $scope is not defined
-       //        therefore I'm commenting this line out for the time being.
-       // - if (isset($scope) && $scope === 'systems') echo 'checked';?>
-	       value="systems">Systems<input type="radio" name="scope"
-      <?php // - if (isset($scope) && $scope=="devices") echo "checked";?>
-	                                     value="devices">Devices<input type="radio" name="scope"
-      <?php // - if (isset($scope) && $scope=="drivers") echo "checked";?>
-	                                                                   value="files">Filename
+	<input type="text" name="query">
+	&nbsp;
+	<input type="submit">
+	<br>
+	<input type="radio" name="scope" value="systems" checked> Systems
+	<input type="radio" name="scope" value="devices"> Devices
+	<input type="radio" name="scope" value="files"> Filename
 </form>
 <?php
 if (!isset($_POST['scope'])) {
