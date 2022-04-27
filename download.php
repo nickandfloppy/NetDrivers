@@ -15,6 +15,7 @@ if (isset($_GET['id'])) {
    // Create connection
    // @TODO: See `stats.php` line 24
    $conn = new mysqli(CONF["servername"], CONF["username"], CONF["password"], CONF["dbname"]);
+   // Convert database ints and floats to php ints and floats
    $conn->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
    // Check connection
    if ($conn->connect_error) {
