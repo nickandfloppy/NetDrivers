@@ -15,6 +15,7 @@ if (isset($_GET['id'])) {
    // Create connection
    // @TODO: See `stats.php` line 24
    $conn = new mysqli(CONF["servername"], CONF["username"], CONF["password"], CONF["dbname"]);
+   $conn->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
    // Check connection
    if ($conn->connect_error) {
       die('Connection failed: ' . $conn->connect_error);
@@ -40,7 +41,7 @@ if (isset($_GET['id'])) {
 
       // output data of each row
       foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
-         $fileurl = $row['file_url'] === null || $row['file_url'] === '' ? 'N/A' : $row['file_url'];
+         //$fileurl = $row['File_URL'] === null || $row['File_URL'] === '' ? 'N/A' : $row['File_URL'];
 
          echo '<h1>Downloading ' . $row['file_name'] . '</h1>';
          echo '<b>Version:</b> ' . $row['version'] . '<br>';

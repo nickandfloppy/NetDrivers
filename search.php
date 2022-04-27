@@ -34,7 +34,7 @@ declare(strict_types=1);
       <?php // - if (isset($scope) && $scope=="devices") echo "checked";?>
 	                                     value="devices">Devices<input type="radio" name="scope"
       <?php // - if (isset($scope) && $scope=="drivers") echo "checked";?>
-	                                                                   value="drivers">Filename
+	                                                                   value="files">Filename
 </form>
 <?php
 if (!isset($_POST['scope'])) {
