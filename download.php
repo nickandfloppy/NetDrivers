@@ -15,6 +15,8 @@ if (isset($_GET['id'])) {
    // Create connection
    // @TODO: See `stats.php` line 24
    $conn = new mysqli(CONF["servername"], CONF["username"], CONF["password"], CONF["dbname"]);
+   // Convert database ints and floats to php ints and floats
+   $conn->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
    // Check connection
    if ($conn->connect_error) {
       die('Connection failed: ' . $conn->connect_error);
@@ -40,7 +42,7 @@ if (isset($_GET['id'])) {
 
       // output data of each row
       foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
-         $fileurl = $row['file_url'] === null || $row['file_url'] === '' ? 'N/A' : $row['file_url'];
+         //$fileurl = $row['File_URL'] === null || $row['File_URL'] === '' ? 'N/A' : $row['File_URL'];
 
          echo '<h1>Downloading ' . $row['file_name'] . '</h1>';
          echo '<b>Version:</b> ' . $row['version'] . '<br>';
@@ -48,7 +50,7 @@ if (isset($_GET['id'])) {
          $mirrors = json_decode($row['mirrors'], true, 512, JSON_THROW_ON_ERROR);
          echo '<br><b>Select from the following mirrors...</b><br>';
          foreach ($mirr_res->fetch_all(MYSQLI_ASSOC) as $mirrorRW) {
-            if (in_array($mirrorRW["ID"], $mirrors, true)) {
+            if (in_array($mirrorRW["id"], $mirrors, true)) {
                $url = $mirrorRW['address'] . $mirrorRW['base_url'] . $row['file_path'] . $row['file_name'];
                echo '<a href="' . ($mirrorRW['https'] === true ? 'https' : 'http') . '://' . $url . '">Mirror '
                   . $mirrorRW['id'] . ' (' . $mirrorRW['region'] . ')</a><br>';

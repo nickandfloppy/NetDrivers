@@ -34,7 +34,7 @@ declare(strict_types=1);
       <?php // - if (isset($scope) && $scope=="devices") echo "checked";?>
 	                                     value="devices">Devices<input type="radio" name="scope"
       <?php // - if (isset($scope) && $scope=="drivers") echo "checked";?>
-	                                                                   value="drivers">Filename
+	                                                                   value="files">Filename
 </form>
 <?php
 if (!isset($_POST['scope'])) {
@@ -123,7 +123,7 @@ switch ($queryScope) {
    }
    case 'files':
    {
-      $stmt = $conn->prepare("SELECT id, file_name, file_path, version FROM files WHERE file_name LIKE ?");
+      $stmt = $conn->prepare("SELECT id, file_name, file_path, version, date FROM files WHERE file_name LIKE ?");
       $stmt->bind_param('s', $query);
       $stmt->execute();
       $result = $stmt->get_result();
