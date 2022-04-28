@@ -21,7 +21,6 @@ declare(strict_types=1);
 <hr>
 <?php
 require('creds.php');
-include('err.php');
 // Create connection
 // @TODO: See `stats.php` line 24
 $conn = new mysqli(CONF["servername"], CONF["username"], CONF["password"], CONF["dbname"]);
@@ -30,7 +29,7 @@ $conn = new mysqli(CONF["servername"], CONF["username"], CONF["password"], CONF[
 if ($conn->connect_error) {
    die('Connection failed: ' . $conn->connect_error);
 }
-echo $_GET['id'];
+
 if (isset($_GET['id'])) {
    $stmt = $conn->prepare('SELECT id, manufacturer, model, data FROM systems WHERE id = ?');
    $stmt->bind_param('i', $_GET['id']);
