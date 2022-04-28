@@ -49,12 +49,12 @@ if (isset($_GET['id'])) {
                // Commented as it doesn't get used anywhere
                //$drstr = '';
                foreach ($item['drivers'] as $driver) {
-                  $driverStmt = $conn->prepare('SELECT manufacturer, device_name FROM devices WHERE id = ?');
-                  $driverStmt->bind_param('i', $driver);
-                  $driverStmt->execute();
-                  $driverResult = $driverStmt->get_result();
-                  foreach ($driverResult->fetch_all(MYSQLI_ASSOC) as $driverRow) {
-                     echo '<tr><td class="drvdetails">' . $driverRow['manufacturer'] . '</td><td class="drvdetails">' . $driverRow['device_name']
+                  $deviceStmt = $conn->prepare('SELECT manufacturer, device_name FROM devices WHERE id = ?');
+                  $deviceStmt->bind_param('i', $driver);
+                  $deviceStmt->execute();
+                  $deviceResult = $deviceStmt->get_result();
+                  foreach ($deviceResult->fetch_all(MYSQLI_ASSOC) as $deviceRow) {
+                     echo '<tr><td class="drvdetails">' . $deviceRow['manufacturer'] . '</td><td class="drvdetails">' . $deviceRow['device_name']
                         . '</td><td class="drvdetails"><a href="/drivers.php?id=' . $driver . '">More Details</a></td><td class="drvdetails">'
                         . '<a href="/download.php?id=' . $driver .'">Download</a></td></tr>';
                   }
