@@ -49,8 +49,8 @@ if (isset($_GET['id'])) {
                // Commented out as it doesn't get used anywhere
                //$drstr = '';
                foreach ($item['drivers'] as $driver) {
-                  $deviceStmt = $conn->prepare('SELECT manufacturer, device_name FROM devices WHERE id = ?');
-                  $deviceStmt->bind_param('i', $driver);
+                  $deviceStmt = $conn->prepare('SELECT manufacturer, device_name FROM devices WHERE JSON_CONTAINS(files, ?)');
+                  $deviceStmt->bind_param('s', $driver);
                   $deviceStmt->execute();
                   $deviceResult = $deviceStmt->get_result();
                   foreach ($deviceResult->fetch_all(MYSQLI_ASSOC) as $deviceRow) {
