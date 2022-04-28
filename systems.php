@@ -17,7 +17,7 @@ declare(strict_types=1);
 	</table>
 </a>
 <hr>
-<?php include 'nav.html'; ?>
+<?php require('nav.html'); ?>
 <hr>
 <?php
 require('creds.php');
@@ -46,7 +46,7 @@ if (isset($_GET['id'])) {
          foreach ($drv['data'] as $item) {
             echo '<tr><th colspan="4"><b>' . $item['os'] . ':</b></th></tr>';
             if (count($item['drivers']) > 0) {
-               // Commented as it doesn't get used anywhere
+               // Commented out as it doesn't get used anywhere
                //$drstr = '';
                foreach ($item['drivers'] as $driver) {
                   $deviceStmt = $conn->prepare('SELECT manufacturer, device_name FROM devices WHERE id = ?');
