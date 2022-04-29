@@ -30,9 +30,9 @@ declare(strict_types=1);
        // @TODO: This should be moved to a function. Furthermore, $scope is not defined
        //        therefore I'm commenting this line out for the time being.
        // - if (isset($scope) && $scope === 'systems') echo 'checked';?>
-	       value="systems">Systems<input type="radio" name="scope"
+	       value="system">Systems<input type="radio" name="scope"
       <?php // - if (isset($scope) && $scope=="devices") echo "checked";?>
-	                                     value="devices">Devices<input type="radio" name="scope"
+	                                     value="device">Devices<input type="radio" name="scope"
       <?php // - if (isset($scope) && $scope=="drivers") echo "checked";?>
 	                                                                   value="files">Filename
 </form>
@@ -57,8 +57,8 @@ function cleanInput(string $data): string {
 }
 
 function listName(string $list, array $row): string {
-   if ($list === 'systems' || $list === 'devices') {
-      if ($list === 'systems') {
+   if ($list === 'system' || $list === 'device') {
+      if ($list === 'system') {
          $output = $row['manufacturer'] . ' ' . $row['model'];
       } else {
          $output = $row['manufacturer'] . ' ' . $row['device_name'];
@@ -105,7 +105,7 @@ $result = false;
 $list   = '';
 // @TODO: Column names should be snake_case
 switch ($queryScope) {
-   case 'systems':
+   case 'system':
    {
       $stmt = $conn->prepare('SELECT id, manufacturer, model FROM systems WHERE model LIKE ?');
       $stmt->bind_param('s', $query);
@@ -113,7 +113,7 @@ switch ($queryScope) {
       $result = $stmt->get_result();
       break;
    }
-   case 'devices':
+   case 'device':
    {
       $stmt = $conn->prepare('SELECT id, manufacturer, device_name FROM devices WHERE device_name LIKE ? OR manufacturer LIKE ?');
       $stmt->bind_param('ss', $query, $query);
