@@ -29,9 +29,9 @@ declare(strict_types=1);
        <?php
        // @TODO: This should be moved to a function. Furthermore, $scope is not defined
        //        therefore I'm commenting this line out for the time being.
-       // - if (isset($scope) && $scope === 'systems') echo 'checked';?>
+       // - if (isset($scope) && $scope === 'system') echo 'checked';?>
 	       value="system">Systems<input type="radio" name="scope"
-      <?php // - if (isset($scope) && $scope=="devices") echo "checked";?>
+      <?php // - if (isset($scope) && $scope=="device") echo "checked";?>
 	                                     value="device">Devices<input type="radio" name="scope"
       <?php // - if (isset($scope) && $scope=="drivers") echo "checked";?>
 	                                                                   value="files">Filename
