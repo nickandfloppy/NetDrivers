@@ -12,7 +12,7 @@ if (isset($_GET['type'], $_GET['id'])) {
    $type = $_GET['type'];
    $id   = $_GET['id'];
    if ($type === 'system') {
-      $url = '/systems.php?id=' . $id;
+      $url = '/system.php?id=' . $id;
       header('Location: ' . $url);
       echo '<h1>Redirecting...</h1><p>If the page does not redirect automatically, <a href="' . $url . '">click here</a>';
       echo '<meta http-equiv="refresh" content="0; URL=' . $url . "\">";
