@@ -2,8 +2,7 @@
 A driver storage and indexing website.
 
 ### To-Do
-- [ ] Add more functionality to devices.php
-- [x] Rename systems.php and devices.php to system.php and device.php respectively
+- [ ] Add more functionality to device.php
 - [ ] Add all files, etc to database (INTERNAL ONLY)
 - [ ] Add file download links to both system and device pages
 
