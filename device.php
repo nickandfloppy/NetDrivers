@@ -40,6 +40,7 @@ if (isset($_GET['id'])) {
    if ($result->num_rows > 0) {
       // output data of each row
       foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
+         // Make table data array to avoid duplicate headers later
          $systemsTableDataQuery = $conn->query('SELECT id, manufacturer, model FROM systems');
          $systemsTableData = $systemsTableDataQuery->fetch_all(MYSQLI_ASSOC);
          foreach($systemsTableData as $key => $system) {
