@@ -45,11 +45,11 @@ if (isset($_GET['id'])) {
          // Commented out as it doesn't get used anywhere
          //$fileurl = $row['File_URL'] === null || $row['File_URL'] === '' ? 'N/A' : $row['File_URL'];
 
-         echo '<h1>Downloading ' . $row['file_name'] . '</h1>';
-         echo '<b>Version:</b> ' . $row['version'] . '<br>';
-         echo '<b>Date:</b> ' . $row['date'] . '<br>';
+         echo '<h1>Downloading ' . $row['file_name'] . ' (ID ' . $_GET['id'] .')</h1>';
+         //echo '<b>Version:</b> ' . $row['version'] . '<br>';
+         //echo '<b>Date:</b> ' . $row['date'] . '<br>';
          $mirrors = json_decode($row['mirrors'], true, 512, JSON_THROW_ON_ERROR);
-         echo '<br><b>Select from the following mirrors...</b><br>';
+         echo '<b>Select from the following mirrors...</b><br>';
          foreach ($mirr_res->fetch_all(MYSQLI_ASSOC) as $mirrorRW) {
             if (in_array($mirrorRW["id"], $mirrors, true)) {
                $url = $mirrorRW['address'] . $mirrorRW['base_url'] . $row['file_path'] . $row['file_name'];
