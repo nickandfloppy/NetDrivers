@@ -103,7 +103,7 @@ if ($query === null) {
 
 $result = false;
 $list   = '';
-// @TODO: Column names should be snake_case
+$querytime = microtime(true);
 switch ($queryScope) {
    case 'system':
    {
@@ -129,10 +129,10 @@ switch ($queryScope) {
       $result = $stmt->get_result();
    }
 }
-
+$querytime = microtime(true) - $querytime;
 if ($result !== false) {
 
-   echo $result->num_rows . ' results for "' . $cleanquery . '" in ' . $queryScope . '<hr>';
+   echo $result->num_rows . ' results for "' . $cleanquery . '" in ' . $queryScope . ' (took ' . round($querytime, 5) . 'ms)<hr>';
 
    if ($result->num_rows > 0) {
       // output data of each row
