@@ -45,21 +45,21 @@ if (isset($_GET['id'])) {
          echo '<table border="1">';
          foreach ($drv['data'] as $item) {
             echo '<tr><th colspan="4"><b>' . $item['os'] . ':</b></th></tr>';
-            /*if (count($item['drivers']) > 0) {
-               $drstr = '';
+            if (count($item['drivers']) > 0) {
+               // Commented out as it doesn't get used anywhere
+               //$drstr = '';
                foreach ($item['drivers'] as $driver) {
-                  $driverstmt = $conn->prepare('SELECT manufacturer, device_name, file_url FROM files WHERE id = ?');
-                  $driverstmt->bind_param('i', $_GET['id']);
-                  $driverstmt->execute();
-                  $driverresult = $stmt->get_result();
-                  foreach ($driverresult->fetch_all(MYSQLI_ASSOC) as $drvrow) {
-                     $fileURL = './files/' . $drvrow['file_url'];
-                     echo '<tr><td class="drvdetails">' . $drvrow['manufacturer'] . '</td><td class="drvdetails">' . $drvrow['device_name']
+                  $deviceStmt = $conn->prepare('SELECT manufacturer, device_name FROM devices WHERE JSON_CONTAINS(files, ?)');
+                  $deviceStmt->bind_param('s', $driver);
+                  $deviceStmt->execute();
+                  $deviceResult = $deviceStmt->get_result();
+                  foreach ($deviceResult->fetch_all(MYSQLI_ASSOC) as $deviceRow) {
+                     echo '<tr><td class="drvdetails">' . $deviceRow['manufacturer'] . '</td><td class="drvdetails">' . $deviceRow['device_name']
                         . '</td><td class="drvdetails"><a href="/drivers.php?id=' . $driver . '">More Details</a></td><td class="drvdetails">'
-                        . '<a href="' . $fileURL . '">Download</a></td></tr>';
+                        . '<a href="/download.php?id=' . $driver .'">Download</a></td></tr>';
                   }
                }
-            }*/
+            }
             echo '<tr><td>TBD</td></tr>';
          }
          echo '</table><br>';

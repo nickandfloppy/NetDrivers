@@ -42,6 +42,7 @@ if (isset($_GET['id'])) {
 
       // output data of each row
       foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
+         // Commented out as it doesn't get used anywhere
          //$fileurl = $row['File_URL'] === null || $row['File_URL'] === '' ? 'N/A' : $row['File_URL'];
 
          echo '<h1>Downloading ' . $row['file_name'] . '</h1>';
