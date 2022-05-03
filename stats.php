@@ -17,7 +17,7 @@ declare(strict_types=1);
 <hr>
 <?php
 require('nav.html');
-echo '<hr/>'; // No need to close the php tag.
+echo '<hr/>';
 require('creds.php');
 
 // Create connection
@@ -28,39 +28,15 @@ if ($conn->connect_error) {
    die($diemsg);
 }
 
-// @TODO: This ideally should be moved to a table 'stats' that's updated on inserts
-//        with a simple trigger. More efficient. COUNT(*) is terrible inefficient, and
-//        I've at least aliviated the issue by replacing * with 0.
-$result      = $conn->query('SELECT COUNT(0) FROM `systems`');
-$row         = $result->fetch_row();
-$systemcount = $row[0];
+$result      = $conn->query('SELECT * FROM `stats`');
 
-$result    = $conn->query('SELECT COUNT(0) FROM `files`');
-$row       = $result->fetch_row();
-$filecount = $row[0];
-
-$result      = $conn->query('SELECT COUNT(0) FROM `devices`');
-$row         = $result->fetch_row();
-$devicecount = $row[0];
+if ($result !== false) {
+	echo '<table border="1"><tr><th>Item</th><th>Count</th><tr>';
+	while ($row = $result->fetch_assoc()) {
+		echo '<tr><td>' . $row['name'] . '</td><td>' . $row['value'] . '</td></tr>';
+	}
+	echo '</table>';
+}
 
 $conn->close();
 ?>
-
-<table border="1">
-	<tr>
-		<th>Item</th>
-		<th>Count</th>
-	<tr>
-		<td>Files</td>
-		<td><?php echo $filecount ?></td>
-	</tr>
-	<tr>
-		<td>Systems</td>
-		<td><?php echo $systemcount ?></td>
-	</tr>
-	<tr>
-		<td>Devices</td>
-		<td><?php echo $devicecount ?></td>
-	</tr>
-</table>
-
