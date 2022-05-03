@@ -4,6 +4,7 @@ const CONF = array(
     "servername" => "servername",
     "username" => "dbusername",
     "password" => "dbpassword",
-    "dbname" => "databasename"
+    "dbname" => "databasename",
+    "webhook" => "webhookurl"
 );
 ?>
