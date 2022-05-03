@@ -28,7 +28,7 @@ if ($conn->connect_error) {
    die($diemsg);
 }
 
-$result      = $conn->query('SELECT name, FROM `stats`');
+$result      = $conn->query('SELECT name, value FROM `stats`');
 
 if ($result !== false) {
 	echo '<table border="1"><tr><th>Item</th><th>Count</th><tr>';
