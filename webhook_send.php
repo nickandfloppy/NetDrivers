@@ -27,7 +27,7 @@ if ($result->num_rows > 0) {
 
 		$json_data = json_encode([
 			"username" => "NetDrivers",
-			"avatar_url" => "http://drivers.nickandfloppy.com/favicon.png",
+			"avatar_url" => "https://drivers.nickandfloppy.com/favicon.png",
 			"tts" => false,
 			"embeds" => [
 				[
@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
 					"color" => hexdec( "3366ff" ),
 					"footer" => [
 						"text" => "ID " . $row['id'],
-						"icon_url" => "http://drivers.nickandfloppy.com/favicon.png"
+						"icon_url" => "https://drivers.nickandfloppy.com/favicon.png"
 					]
 				]
 			]
