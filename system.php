@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
       foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
          $drv = json_decode($row['data'], true, 512, JSON_THROW_ON_ERROR);
          echo '<h2 class="title"><i>' . $row['manufacturer'] . ' ' . $row['model'] . '</i></h2><hr>';
-         echo '<a href="/link.php?type=system&id=' . $_GET['id'] . '">Linkback</a><br><br>';
+         echo '<a href="/link.php?type=system&id=' . urlencode($_GET['id']) . '">Linkback</a><br><br>';
          echo '<table border="1">';
          foreach ($drv['data'] as $item) {
             echo '<tr><th colspan="4"><b>' . $item['os'] . ':</b></th></tr>';

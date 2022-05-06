@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
          // Commented out as it doesn't get used anywhere
          //$fileurl = $row['File_URL'] === null || $row['File_URL'] === '' ? 'N/A' : $row['File_URL'];
 
-         echo '<h1>Downloading ' . $row['file_name'] . ' (ID ' . $_GET['id'] .')</h1>';
+         echo '<h1>Downloading ' . $row['file_name'] . ' (ID ' . urlencode($_GET['id']) .')</h1>';
          //echo '<b>Version:</b> ' . $row['version'] . '<br>';
          //echo '<b>Date:</b> ' . $row['date'] . '<br>';
          $mirrors = json_decode($row['mirrors'], true, 512, JSON_THROW_ON_ERROR);
