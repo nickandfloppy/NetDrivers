@@ -13,7 +13,6 @@ require('creds.php');
 
 if (isset($_GET['id'])) {
    // Create connection
-   // @TODO: See `stats.php` line 24
    $conn = new mysqli(CONF["servername"], CONF["username"], CONF["password"], CONF["dbname"]);
    // Convert database ints and floats to php ints and floats
    $conn->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
@@ -27,17 +26,13 @@ if (isset($_GET['id'])) {
    $result = $stmt->get_result();
 
    $mirrors = 1;
-   // @TODO: Use a trigger, much like I mentioned in stats too.
-   $mirr_res = $conn->query('SELECT id, name, region, address, base_url, https FROM mirrors');
-   if ($mirr_res->num_rows === 0) {
-      echo 'No mirrors available';
-      $mirrors = 0;
-   }
-
+   $mirr_res = $conn->query('SELECT value FROM stats WHERE id=4');
+   $mirrors = $mirr_res->fetch_all(MYSQLI_ASSOC)[0]['value'];
    // Get mirror info
    $sql = 'SELECT id, name, region, address, base_url, https FROM mirrors';
+   $mirr_res = $conn->query($sql);
 
-   if ($result->num_rows > 0 && $mirrors === 1) {
+   if ($mirrors > 0) {
       //echo "<table border=\"1\"><td><b>Linkback: </b><a href=\"http://drivers.nickandfloppy.com/link.php?type=driver&id=" . $_GET['id'] . "\">http://drivers.nickandfloppy.com/link.php?type=driver&id=" . $_GET['id'] . "</td></table>";
 
       // output data of each row
@@ -59,8 +54,10 @@ if (isset($_GET['id'])) {
          }
       }
    } else {
-      if ($mirrors === 1) {
+      if ($mirrors > 0) {
          echo 'Invalid ID provided';
+      } else {
+         echo 'No mirrors available';
       }
    }
    $conn->close();

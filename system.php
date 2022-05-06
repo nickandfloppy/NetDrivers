@@ -22,7 +22,6 @@ declare(strict_types=1);
 <?php
 require('creds.php');
 // Create connection
-// @TODO: See `stats.php` line 24
 $conn = new mysqli(CONF["servername"], CONF["username"], CONF["password"], CONF["dbname"]);
 
 // Check connection
