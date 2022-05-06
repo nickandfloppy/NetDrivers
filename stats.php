@@ -28,12 +28,12 @@ if ($conn->connect_error) {
    die($diemsg);
 }
 
-$result      = $conn->query('SELECT name, value FROM `stats`');
+$result = $conn->query('SELECT name, count FROM stats');
 
 if ($result !== false) {
 	echo '<table border="1"><tr><th>Item</th><th>Count</th><tr>';
 	while ($row = $result->fetch_assoc()) {
-		echo '<tr><td>' . $row['name'] . '</td><td>' . $row['value'] . '</td></tr>';
+		echo '<tr><td>' . $row['name'] . '</td><td>' . $row['count'] . '</td></tr>';
 	}
 	echo '</table>';
 }
