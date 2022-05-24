@@ -16,10 +16,10 @@ declare(strict_types=1);
 		</tr>
 	</table>
 </a>
-<hr>
-<?php require('nav.html'); ?>
-<hr>
 <?php
+echo '<hr>';
+require('nav.html');
+echo '<hr>';
 require('creds.php');
 
 // Create connection

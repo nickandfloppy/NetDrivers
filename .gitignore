@@ -11,6 +11,8 @@ Thumbs.db
 # IDE-specific files
 .idea/
 .vscode/
+*.sublime-project
+*.sublime-workspace
 
 #Log files
 *.log
