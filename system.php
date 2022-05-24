@@ -40,28 +40,19 @@ if (isset($_GET['id'])) {
       foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
          $drv = json_decode($row['data'], true, 512, JSON_THROW_ON_ERROR);
          echo '<h2 class="title"><i>' . $row['manufacturer'] . ' ' . $row['model'] . '</i></h2><hr>';
-         echo '<a href="/link.php?type=system&id=' . urlencode($_GET['id']) . '">Linkback</a><br><br>';
-         echo '<table border="1">';
+         //echo '<a href="/link.php?type=system&id=' . urlencode($_GET['id']) . '">Linkback</a><br><br>';
          foreach ($drv['data'] as $item) {
-            echo '<tr><th colspan="4"><b>' . $item['os'] . ':</b></th></tr>';
-            if (count($item['drivers']) > 0) {
-               // Commented out as it doesn't get used anywhere
-               //$drstr = '';
-               foreach ($item['drivers'] as $driver) {
-                  $deviceStmt = $conn->prepare('SELECT manufacturer, device_name FROM devices WHERE JSON_CONTAINS(files, ?)');
-                  $deviceStmt->bind_param('s', $driver);
-                  $deviceStmt->execute();
-                  $deviceResult = $deviceStmt->get_result();
-                  foreach ($deviceResult->fetch_all(MYSQLI_ASSOC) as $deviceRow) {
-                     echo '<tr><td class="drvdetails">' . $deviceRow['manufacturer'] . '</td><td class="drvdetails">' . $deviceRow['device_name']
-                        . '</td><td class="drvdetails"><a href="/drivers.php?id=' . $driver . '">More Details</a></td><td class="drvdetails">'
-                        . '<a href="/download.php?id=' . $driver .'">Download</a></td></tr>';
-                  }
+            echo '<table border="1">';
+            echo '<tr><th align="left" colspan="23"><b>' . $item['os'] . ':</b></th></tr>';
+            if (count($item['files']) > 0) {
+               foreach ($item['files'] as $file) {
+                  $sql = "SELECT file_name FROM files WHERE id=" . $file['id'];
+                  $filedata = $conn->query($sql)->fetch_assoc();
+                  echo '<tr><td>' . $file['name'] . '</td><td>' . $filedata['file_name'] . '</td><td><a href="/download.php?id=' . $file['id'] . '">Details</a></td></tr>';
                }
             }
-            echo '<tr><td>TBD</td></tr>';
+            echo '</table><br>';
          }
-         echo '</table><br>';
       }
    } else {
       echo 'Invalid System ID';

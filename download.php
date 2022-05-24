@@ -38,7 +38,10 @@ if (isset($_GET['id'])) {
             echo 'No mirrors available';
             continue;
          }
-         echo '<h1>Downloading ' . $row['file_name'] .'</h1>';
+         echo '<h1>Downloading File...</h1><hr>';
+         echo '<b>File ID:</b> ' . urlencode($_GET['id']) . '<br>';
+         echo '<b>File Name:</b> ' . $row['file_name'] . '<br>';
+         echo '<b>File Location:</b> ' . $row['file_path'] . '<br><br>';
          //echo '<b>Version:</b> ' . $row['version'] . '<br>';
          //echo '<b>Date:</b> ' . $row['date'] . '<br>';
          
@@ -57,7 +60,6 @@ if (isset($_GET['id'])) {
             }
          }
       }
-      echo '<br> ID: ' . urlencode($_GET['id']);
    } else {
       echo 'Invalid ID provided';
    }
@@ -66,7 +68,7 @@ if (isset($_GET['id'])) {
 } else {
    echo 'No ID provided';
 }
-
+include('footer.php');
 ?>
 </body>
 </html>

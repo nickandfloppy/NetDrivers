@@ -1,6 +1,8 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	background-color: #3c3c84;
+	/* background-color: #3c3c84; */
+  background-image: url('/img/bg1.gif');
+  background-size: contain;
 	color: #ffffff;
 }
 
@@ -30,4 +32,8 @@ h1.header {
 
 h2.title {
   margin: 0px;
+}
+
+th {
+  text-align: left;
 }
