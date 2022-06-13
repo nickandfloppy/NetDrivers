@@ -18,7 +18,7 @@ declare(strict_types=1);
 </a>
 <?php
 echo '<hr>';
-require('nav.html');
+include('nav.html');
 echo '<hr>';
 require('creds.php');
 

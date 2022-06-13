@@ -17,7 +17,7 @@ declare(strict_types=1);
 	</table>
 </a>
 <hr>
-<?php require('nav.html'); ?>
+<?php include('nav.html'); ?>
 <hr>
 <?php
 require('creds.php');

@@ -19,7 +19,7 @@ declare(strict_types=1);
 	</table>
 </a>
 <hr>
-<?php require('nav.html'); ?>
+<?php include('nav.html'); ?>
 <hr>
 <p>This page currently has no content. Use the above links to navigate the site!</p>
 <hr>

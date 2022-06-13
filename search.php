@@ -21,7 +21,7 @@ declare(strict_types=1);
 	</table>
 </a>
 <hr>
-<?php require('nav.html'); ?>
+<?php include('nav.html'); ?>
 <hr>
 <form action="search.php" method="post">
 	<input type="text" name="query">&nbsp;<input type="submit"><br>
