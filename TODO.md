@@ -10,6 +10,6 @@ A driver storage and indexing website.
 > Some things that need to be improved:
 >
 > - [x] Use require() instead of include()
-> - [ ] The database needs to be refactored. Triggers are essential
+> - [x] The database needs to be refactored. Triggers are essential
 > - [ ] Database functions should be moved to a single class or multiple that extend one that connects
 > - [ ] Tons of things should be moved to functions
