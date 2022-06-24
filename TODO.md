@@ -3,7 +3,6 @@ A driver storage and indexing website.
 
 ### To-Do
 - [ ] Add more functionality to device.php
-- [ ] Add all files, etc to database (INTERNAL ONLY)
 - [ ] Add file download links to both system and device pages
 
 ### Notes from Animadoria
