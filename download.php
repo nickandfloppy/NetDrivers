@@ -38,8 +38,7 @@ if (isset($_GET['id'])) {
             echo 'No mirrors available';
             continue;
          }
-         echo '<h1>Downloading File...</h1><hr>';
-         echo '<b>File ID:</b> ' . urlencode($_GET['id']) . '<br>';
+         echo '<h1 class="header">Downloading File...</h1><hr>';
          echo '<b>File Name:</b> ' . $row['file_name'] . '<br>';
          echo '<b>File Location:</b> ' . $row['file_path'] . '<br><br>';
          //echo '<b>Version:</b> ' . $row['version'] . '<br>';
