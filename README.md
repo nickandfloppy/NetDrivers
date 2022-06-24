@@ -4,7 +4,7 @@ A driver archival and indexing website.
 
 ## Contributing
 
-A list of possible items for contributions/pull requests can be found in TODO.md
+A list of possible items for contributions/pull requests can be found in [TODO.md](TODO.md)
 
 In general, we follow the "fork-and-pull" Git workflow.
 
